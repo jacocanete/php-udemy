@@ -1,5 +1,9 @@
 <?php
 
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+
+use Framework\Dispatcher;
 use Framework\Router;
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -11,7 +15,18 @@ spl_autoload_register(function (string $class_name) {
 $router = new Router();
 
 $router->add(
-    '/{controller}/{action}'
+    '/{title}/{id:\d+}/{page:\d+}',
+    array(
+        'controller' => 'products',
+        'action' => 'showPage'
+    )
+);
+$router->add(
+    '/product/{slug:[\w-]+}',
+    array(
+        'controller' => 'products',
+        'action' => 'show'
+    )
 );
 $router->add(
     '/{controller}/{id:\d+}/{action}'
@@ -37,16 +52,10 @@ $router->add(
         'action' => 'index'
     )
 );
+$router->add(
+    '/{controller}/{action}'
+);
 
-$params = $router->match($path);
+$dispatcher = new Dispatcher($router);
 
-if ($params === false) {
-    exit('404 Not Found');
-}
-
-$action = $params['action'];
-$controller = 'App\Controllers\\' . ucwords($params['controller']);
-
-$controller_object = new $controller();
-
-$controller_object->$action();
+$dispatcher->handle($path);
