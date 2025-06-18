@@ -22,7 +22,7 @@ $router->add(
     )
 );
 $router->add(
-    '/product/{slug:[\w-]+}',
+    '/product/{id:[\w-]+}',
     array(
         'controller' => 'products',
         'action' => 'show'

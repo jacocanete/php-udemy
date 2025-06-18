@@ -17,7 +17,6 @@ class Products
 
     public function show(string $id)
     {
-        var_dump($id);
         require 'src/views/products_show.php';
     }
 

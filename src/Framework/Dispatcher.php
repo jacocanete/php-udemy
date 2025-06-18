@@ -21,6 +21,14 @@ class Dispatcher
         $action = $params['action'];
         $controller = 'App\Controllers\\' . ucwords($params['controller']);
 
+        if (!class_exists($controller)) {
+            exit('404 Controller Not Found');
+        }
+
+        if (!method_exists($controller, $action)) {
+            exit('404 Action Not Found');
+        }
+
         $controller_object = new $controller();
 
         $args = $this->getActionArguments($controller, $action, $params);
