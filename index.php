@@ -11,6 +11,12 @@ spl_autoload_register(function (string $class_name) {
 $router = new Router();
 
 $router->add(
+    '/{controller}/{action}'
+);
+$router->add(
+    '/{controller}/{id:\d+}/{action}'
+);
+$router->add(
     '/home/index',
     array(
         'controller' => 'home',
