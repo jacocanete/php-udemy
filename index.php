@@ -15,6 +15,12 @@ spl_autoload_register(function (string $class_name) {
 $router = new Router();
 
 $router->add(
+    '/admin/{controller}/{action}',
+    array(
+        'namespace' => 'Admin'
+    )
+);
+$router->add(
     '/{title}/{id:\d+}/{page:\d+}',
     array(
         'controller' => 'products',
