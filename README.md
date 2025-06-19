@@ -72,6 +72,30 @@ Contributions are welcome, especially if you want to help improve the learning e
 
 Thank you for helping make this a better resource for learners!
 
+## PHP MVC Concepts Covered
+
+This project demonstrates several foundational concepts in PHP MVC framework development:
+
+- **Front Controller Pattern**: All requests are routed through a single entry point (`index.php`).
+- **Routing**: Mapping URLs to controllers and actions, including dynamic route parameters.
+- **Controllers**: Classes that handle user requests and coordinate responses.
+- **Models**: Classes that represent and interact with data (e.g., `Product.php`).
+- **Views**: Templates for rendering HTML output.
+- **Dependency Injection**: Using a container to manage and inject dependencies.
+- **Autoloading**: Dynamically loading classes as needed.
+- **Namespaces**: Organizing code into logical groups.
+- **Error Handling**: Basic exception handling for routing and dispatching.
+- **Separation of Concerns**: Keeping business logic, presentation, and routing separate.
+
+### Useful Resources
+
+- [PHP: The Right Way](https://phptherightway.com/)
+- [MVC Pattern Explained](https://www.geeksforgeeks.org/mvc-design-pattern/)
+- [Laravel Documentation - The Basics](https://laravel.com/docs/10.x)
+- [Symfony Routing Component](https://symfony.com/doc/current/components/routing.html)
+- [PSR-4: Autoloader Standard](https://www.php-fig.org/psr/psr-4/)
+- [Dependency Injection in PHP](https://php-di.org/doc/)
+
 ---
 
 Happy learning! 🚀
