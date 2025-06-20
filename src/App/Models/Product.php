@@ -1,20 +1,34 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use PDO;
+use App\Database;
 
+/**
+ * Model for handling product data and database interactions.
+ */
 class Product
 {
+    /**
+     * Product constructor.
+     *
+     * @param Database $database The database connection dependency.
+     */
+    public function __construct(private Database $database)
+    {
+    }
+
+    /**
+     * Retrieves all product data from the database.
+     *
+     * @return array The list of products as associative arrays.
+     */
     public function getData(): array
     {
-        // Data Source Name (DSN) for connecting to the MySQL database
-        $dsn = 'mysql:host=localhost;dbname=product_db;charset=utf8';
-
-        // Create a new PDO instance for database connection
-        $pdo = new PDO($dsn, 'product_db_user', 'secret', array(
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Enable exceptions for errors
-        ));
+        $pdo = $this->database->getConnection();
 
         // Fetch all products from the product table
         $stmt = $pdo->query('SELECT * FROM product');
